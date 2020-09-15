@@ -1,3 +1,12 @@
+//Celcius and Fahrenheit Converter
+function convertToFarenheit (celcius){
+    const fahrenheit = ( celcius * 9 ) / 5 + 32;
+    console.log(fahrenheit);
+}
+
+convertToFarenheit(0);
+
+//task 2
 let favoriteMovies = [ "interstellar", "interception" ];
 
 function addFavoriteMovie (movieName){
@@ -7,6 +16,7 @@ function addFavoriteMovie (movieName){
 };
 
 addFavoriteMovie("The bad boys");
+addFavoriteMovie("Spideman");
 
 function printFavoriteBooks(){
     const msg = `Favorite Movies: ${favoriteMovies.length}`
