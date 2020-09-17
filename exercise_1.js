@@ -1,10 +1,12 @@
 //Celcius and Fahrenheit Converter
-function convertToFarenheit (celcius){
-    const fahrenheit = ( celcius * 9 ) / 5 + 32;
-    console.log(fahrenheit);
+function convertToCelcius (fahrenheit){
+    const celcius = (( fahrenheit - 32 ) * 5 / 9).toFixed(1);
+    const report = `Current Temperature is ${celcius} degree Celcius`;
+    console.log(report);
 }
 
-convertToFarenheit(0);
+convertToCelcius(30);
+convertToCelcius(212);
 
 //task 2
 let favoriteMovies = [ "interstellar", "interception" ];
@@ -27,3 +29,6 @@ function printFavoriteBooks(){
 };
 
 printFavoriteBooks();
+
+
+
