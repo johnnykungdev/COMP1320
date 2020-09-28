@@ -81,13 +81,10 @@ function getDayOfTheWeek (year, month, date){
         const last_two_digits = year % 100;
         //step 1: determine how many 12s fit in last_two_digits
         const num_of_12s = Math.floor(last_two_digits / 12);
-        console.log("num_of_12s", num_of_12s);
         //step 2: determine the remainder
         const remainder = last_two_digits % 12;
-        console.log("remainder", remainder);
         //step 3: determine the number of 4s in the remainder;
         const num_of_4s = Math.floor(remainder / 4);
-        console.log("num_of_4s", num_of_4s);
         //step 4: determine the correspond month code;
         const target_month = monthCodes.find(ele => ele.month === month);
         let target_month_code, century_code, leapyear_code, total_in_step4;
@@ -98,21 +95,39 @@ function getDayOfTheWeek (year, month, date){
             return;
         }
         century_code = checkCenturies(year);
-        leapyear_code = isLeapYear(year);
+        if ( month === 1 || month === 2 ){
+            leapyear_code = isLeapYear(year);
+        } else {
+            leapyear_code = 0;
+        }
         total_in_step4 = target_month_code + century_code + leapyear_code;
-        console.log("total_in_step4", total_in_step4);
         //final step: add all the numbers together
         algoResult =  num_of_12s + remainder + num_of_4s + date + total_in_step4;
         //get the remainder divided by 7
         const result_remainder = algoResult % 7;
         //find matched day
-        console.log("result_remainder", result_remainder);
         const day_in_week = dayCodes.find(day => day.remainder === result_remainder).day;
-        console.log("day_in_week", day_in_week);
-        console.log(new Date(year, month - 1, date).getDay());
+        return day_in_week;
     }
 
-    runAlgo(year, month, date)
+    return runAlgo(year, month, date);
 }
 
-getDayOfTheWeek(2019, 1, 2);
+function makeCalender (){
+    const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const days_in_month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    months.forEach((month, index) => {
+        const month_days = days_in_month[index];
+        for (let i = 0; i < month_days; i++){
+            const date_msg = `${month}-${i+1}-2020 is ${getDayOfTheWeek(2020, month, i+1)}`;
+            console.log(date_msg);
+        }
+    })
+}
+
+module.exports = {
+    getDayOfTheWeek: getDayOfTheWeek,
+    makeCalender: makeCalender
+}
+
