@@ -12,4 +12,6 @@ function getDayOfTheWeekForUserDate (){
     console.log(date_msg);
 };
 
+makeCalender();
+
 getDayOfTheWeekForUserDate();
