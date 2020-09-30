@@ -4,7 +4,7 @@ const dayCodes = [
     { day: "Monday", remainder: 2 },
     { day: "Tuesday", remainder: 3 },
     { day: "Wednesday", remainder: 4 },
-    { day: "Thursay", remainder: 5 },
+    { day: "Thursday", remainder: 5 },
     { day: "Friday", remainder: 6 }
 ];
 
